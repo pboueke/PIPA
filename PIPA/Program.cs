@@ -79,7 +79,6 @@ namespace PIPA
                         s.Threads.Add(thread);
                     }
                 }
-                if (cm.RequiredRequestsForStopping == 0) Utils.ConsoleUtils.ConfirmEndlessness(!config.ConfirmEndlesness);
                 logger.Info("Waiting for conclusion...");
                 Wait(stages.ToArray(), config.BufferList, cm);
                 logger.Info("Execution complete...");
