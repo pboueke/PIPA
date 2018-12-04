@@ -76,7 +76,7 @@ Here is a simple use case, which makes it clear how the configuration works.
 ![example](img/example.png)
 
 
-The example workflow above is represented and achieved by the following configuration (at ```PIPA/Sample/test_config.json```): 
+The example workflow above is represented and achieved by the following configuration (at ```PIPA/Sample/example_config.json```): 
 
 ```
 #alias !Buffer1Name "CreatedItems"
