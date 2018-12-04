@@ -46,7 +46,7 @@ This list contains ```StageConfiguration``` objects, each defining a step of the
 * **StageThreadsNumber**: Integer representing the number of threads to be executed for this stage. Each thread performs the exact same processing, to the same input and output buffers. Some of the stages won't allow for more than one thread and will ignore this attribute. If none is defined, defaults to ```1```. *Note* that **all threads** run from the same ```Stage``` object, sharing it's memory pool. Therefore, if using shared objects while adding new modules (which may be *very* useful), consider using thread safe ones.
 * **StageParameters**: A dynamic object, which attributes and properties are defined by the ```StageType```. See the available modules (types) for specific information on each case.
 
-![Real time monitoring of stage and buffer status](img/CAPTURE.PNG)
+![Real time monitoring of stage and buffer status](img/capture.PNG)
 
 *Real time monitoring of stage and buffer status*
 
@@ -73,7 +73,7 @@ Aliases can be used to insert *any type of value* in the configuration file *as 
 
 Here is a simple use case, which makes it clear how the configuration works.
 
-![](img/example.png)
+![example](img/example.png)
 
 
 The example workflow above is represented and achieved by the following configuration (at ```PIPA/Sample/test_config.json```): 
