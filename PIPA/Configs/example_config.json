@@ -1,0 +1,48 @@
+﻿// Alias usage example
+#alias !Buffer1 "CreatedItems"  
+#alias !Buffer2 "ProcessedItems"
+
+{
+  "BufferList": [
+    {
+      "BufferName": !Buffer1,
+      "BufferSize": 10
+    },
+    {
+      "BufferName": !Buffer2,
+      "BufferSize": 10
+    }
+  ],
+  "StageList": [
+    {
+      "StageName": "CreateStage",
+      "StageType": "Example.Producer",
+      "OutputBufferNames": [ !Buffer1 ],
+      "StageParameters": {
+        "MsProductionDelay": 10,
+        "Debug": false
+      }
+    },
+    {
+      "StageName": "ProcessingStage",
+      "StageType": "Example.Processor",
+      "InputBufferName": "!Buffer1",
+      "OutputBufferNames": [ "!Buffer2" ],
+      "StageThreadsNumber": 5,
+      "StageParameters": {
+        "MsProcessingDelay": 100,
+        "Debug": false
+      }
+    },
+    {
+      "StageName": "FinalStage",
+      "StageType": "Example.Consumer",
+      "InputBufferName": "!Buffer2",
+      "StageParameters": {
+        "MsConsumingDelay": 10,
+        "Limit": 5000,
+        "Debug": false
+      }
+    }
+  ]
+}
