@@ -95,7 +95,7 @@ The example workflow above is represented and achieved by the following configur
   "StageList": [
     {
       "StageName": "CreateStage",
-      "StageType": "Test.Producer",
+      "StageType": "Example.Producer",
       "OutputBufferNames": [ !Buffer1Name ],
       "StageParameters": {
         "MsProductionDelay":  10
@@ -103,7 +103,7 @@ The example workflow above is represented and achieved by the following configur
     },
     {
       "StageName": "ProcessingStage",
-      "StageType": "Test.Processor",
+      "StageType": "Example.Processor",
       "InputBufferName": !Buffer1Name,
       "OutputBufferNames": [ "ProcessedItems" ],
       "StageThreadsNumber": 10,
@@ -113,7 +113,7 @@ The example workflow above is represented and achieved by the following configur
     },
     {
       "StageName": "FinalStage",
-      "StageType": "Test.Consumer",
+      "StageType": "Example.Consumer",
       "InputBufferName": "ProcessedItems",
       "StageParameters": {
         "MsConsumingDelay": 10,
@@ -127,7 +127,7 @@ The example workflow above is represented and achieved by the following configur
 
 We are defining two buffers, each of size 10. Those buffers are then used to connect the 3 stages. The first, ```CreateStage``` only adds data to the first buffer. The second, ```ProcessingStage```, consumes the data from the first stage and then adds the processed records to the second buffer. The third stage,  ```FinalStage```, finally consumes the data from the last buffer.
 
-Note that the milisecond delays are custom parameters for each of the stage types (in this case, ```Test.Producer```, ```Test.Processor``` and ```Test.Consumer```, all defined here: PIPA/Stage/Example. Also note that the delay of the Processor is ten times larger than those of the Producer and the Consumer. To compensate, we are launching 10 threads for the second stage, by simply adding ```"StageThreadsNumber": 10```.
+Note that the milisecond delays are custom parameters for each of the stage types (in this case, ```Example.Producer```, ```Example.Processor``` and ```Example.Consumer```, all defined here: PIPA/Stage/Example. Also note that the delay of the Processor is ten times larger than those of the Producer and the Consumer. To compensate, we are launching 10 threads for the second stage, by simply adding ```"StageThreadsNumber": 10```.
 
 ## Modules
 
@@ -154,7 +154,7 @@ Each stage, or module, is required to implement the ```IStage``` interface. This
 
 * **Initialize(dynamic parameters)**: this method simply initializes any of the stage properties, and will be used even if there is nothing to be initialized.
 
-* **Run(BlockingCollection\<dynamic\> input, List\<BlockingCollection\<dynamic\>\> output, CancellationTokenSource token, NLog.Logger logger)**: this method is the core of the stage. Here all the processing is implemented and executed. It receives as parameters the read and write buffers, any of which can be null, and the NLog logger object. It also receives the CancelationManager token, which is used to abort the execution of all stages when the goal of the processing is reached. To activate the cancelation token, use its ```RequestStop()``` method (you can see the ```Stage\Test\Consumer.cs``` stage for an example).
+* **Run(BlockingCollection\<dynamic\> input, List\<BlockingCollection\<dynamic\>\> output, CancellationTokenSource token, NLog.Logger logger)**: this method is the core of the stage. Here all the processing is implemented and executed. It receives as parameters the read and write buffers, any of which can be null, and the NLog logger object. It also receives the CancelationManager token, which is used to abort the execution of all stages when the goal of the processing is reached. To activate the cancelation token, use its ```RequestStop()``` method (you can see the ```Stage\Example\Consumer.cs``` stage for an example).
 
 ### Adding New Modules
 
