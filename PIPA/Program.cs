@@ -4,7 +4,6 @@ using PIPA.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Diagnostics;
@@ -19,26 +18,35 @@ namespace PIPA
 
         static void Main(string[] args)
         {
-            // Config logger
-            var nlogConfig = new NLog.Config.LoggingConfiguration();
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "log.txt" };
-            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
-            nlogConfig.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
-            nlogConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
-            LogManager.Configuration = nlogConfig;
+            try
+            {
 
-            // Load Configuration
-            config = JsonConvert.DeserializeObject<PIPAConfiguration>(
-                ConfigurationManager.AppSettings["configFile"]);
+                // Config logger
+                var nlogConfig = new NLog.Config.LoggingConfiguration();
+                var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "log.txt" };
+                var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+                nlogConfig.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
+                nlogConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                LogManager.Configuration = nlogConfig;
+                logger = NLog.LogManager.GetCurrentClassLogger();
 
-            Execute();
+                // Load Configuration
+                logger.Info("Reading configuration file...");
+                config = ConfigurationLoader.GetExporterOptions(
+                    ConfigurationManager.AppSettings["configFile"]);
+
+                Execute();
+            }
+            catch (Exception ex)
+            {
+                logger.Fatal(ex);
+            }
         }
 
         private static void Execute()
         {
             logger.Info("Start");
 
-            logger.Info("Reading configuration file...");
             logger.Info("Initializing stages and buffers...");
             config.Initialize();
 

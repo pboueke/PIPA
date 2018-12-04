@@ -103,7 +103,7 @@ namespace PIPA.Utils
             info[1] = new Formatter("stages", Color.Orange);
             info[2] = new Formatter("buffers", Color.Orange);
             info[3] = new Formatter("README", Color.Green);
-            info[4] = new Formatter("https://gitlab.com/BigDataCorp/Internal.Tools.PIPA", Color.Teal);
+            info[4] = new Formatter("https://github.com/pboueke/PIPA", Color.Teal);
             info[5] = new Formatter("X", Color.Red);
 
             foreach (var b in Buffers)

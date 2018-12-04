@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using PIPA.Models;
 
-namespace PIPA.Stage.Test
+namespace PIPA.Stage.Example
 {
     class Consumer : IStage
     {

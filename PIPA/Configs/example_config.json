@@ -26,8 +26,8 @@
     {
       "StageName": "ProcessingStage",
       "StageType": "Example.Processor",
-      "InputBufferName": "!Buffer1",
-      "OutputBufferNames": [ "!Buffer2" ],
+      "InputBufferName": !Buffer1,
+      "OutputBufferNames": [ !Buffer2 ],
       "StageThreadsNumber": 5,
       "StageParameters": {
         "MsProcessingDelay": 100,
@@ -37,7 +37,7 @@
     {
       "StageName": "FinalStage",
       "StageType": "Example.Consumer",
-      "InputBufferName": "!Buffer2",
+      "InputBufferName": !Buffer2,
       "StageParameters": {
         "MsConsumingDelay": 10,
         "Limit": 5000,

@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 using PIPA.Models;
 using PIPA.Utils;
 
-namespace PIPA.Stage.Test
+namespace PIPA.Stage.Example
 {
     class Processor : IStage
     {

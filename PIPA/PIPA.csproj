@@ -63,12 +63,16 @@
     <Compile Include="Models\PIPAConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stage\Example\Consumer.cs" />
+    <Compile Include="Stage\Example\Processor.cs" />
+    <Compile Include="Stage\Example\Producer.cs" />
     <Compile Include="Utils\ConsoleUtils.cs" />
     <Compile Include="Utils\FunctionCompiler.cs" />
     <Compile Include="Utils\PipelineUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Configs\example_config.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
