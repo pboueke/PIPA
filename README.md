@@ -146,7 +146,7 @@ Note that the milisecond delays are custom parameters for each of the stage type
     }
 ```
 
-Each stage, or module, is required to implement the [IStage](https://gitlab.com/BigDataCorp/Internal.Tools.PIPA/blob/master/PIPA/PIPA/IStage.cs) interface. This makes it easy for new users to implement their own modules, as no other piece of code needs to be changed. If there are any questions related to how to add new modules, you can take a look at the example above, with its very simple [implemented modules](https://gitlab.com/BigDataCorp/Internal.Tools.PIPA/tree/master/PIPA/PIPA/Stage/Test). The interface contains two methods and two properties:
+Each stage, or module, is required to implement the ```IStage``` interface. This makes it easy for new users to implement their own modules, as no other piece of code needs to be changed. If there are any questions related to how to add new modules, you can take a look at the example above, with its very simple implemented modules (see PIPA/Stage/Example). The interface contains two methods and two properties:
 
 * **RequireCancellationToken**: A property which defines if the stage needs to be finalized by itself before the finalization of the pipeline. By having this property take the value ```true```, the application will wait the stage issue a Stop request before finalizing. If multiple stages have this property *enabled*, then all of them must be finnished before ending the execution.
 
