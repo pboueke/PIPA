@@ -127,7 +127,7 @@ The example workflow above is represented and achieved by the following configur
 
 We are defining two buffers, each of size 10. Those buffers are then used to connect the 3 stages. The first, ```CreateStage``` only adds data to the first buffer. The second, ```ProcessingStage```, consumes the data from the first stage and then adds the processed records to the second buffer. The third stage,  ```FinalStage```, finally consumes the data from the last buffer.
 
-Note that the milisecond delays are custom parameters for each of the stage types (in this case, ```Test.Producer```, ```Test.Processor``` and ```Test.Consumer```, all defined here: [PIPA/Stage/Test/](https://gitlab.com/BigDataCorp/Internal.Tools.PIPA/tree/master/PIPA/PIPA/Stage/Test)). Also note that the delay of the Processor is ten times larger than those of the Producer and the Consumer. To compensate, we are launching 10 threads for the second stage, by simply adding ```"StageThreadsNumber": 10```.
+Note that the milisecond delays are custom parameters for each of the stage types (in this case, ```Test.Producer```, ```Test.Processor``` and ```Test.Consumer```, all defined here: [PIPA/Stage/Example/](https://gitlab.com/BigDataCorp/Internal.Tools.PIPA/tree/master/PIPA/PIPA/Stage/Test)). Also note that the delay of the Processor is ten times larger than those of the Producer and the Consumer. To compensate, we are launching 10 threads for the second stage, by simply adding ```"StageThreadsNumber": 10```.
 
 ## Modules
 
