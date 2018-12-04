@@ -158,7 +158,7 @@ Each stage, or module, is required to implement the [IStage](https://gitlab.com/
 
 ### Adding New Modules
 
-All you need to do is to add a new ```.cs``` file containing a class implementing the ```IStage``` interface, at the ```Stage``` directory. Categorize your new module by adding it to a subdirectory related to the scope of your module. **TEST** your creation and, most importantly than all, **DOCUMENT IT** at the section below in alphabetical order. Some **tips and suggestions** are listed below:
+All you need to do is to add a new ```.cs``` file containing a class implementing the ```IStage``` interface, at the ```Stage``` directory. Some **tips and suggestions** are listed below:
 
 #### IStage.Run() Strucutre
 
