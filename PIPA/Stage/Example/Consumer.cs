@@ -38,9 +38,9 @@ namespace PIPA.Stage.Example
                 {
                     if (token.Stop()) break;
                     if (token.Continue(rec)) continue;
-                    if (Debug) Console.WriteLine(string.Format("[{0}/{1}] Consuming {2}", ++counter, Limit, rec));
+                    if (Debug) Console.WriteLine(string.Format("[{0}/{1}] Consuming {2}", counter, Limit, rec));
                     Thread.Sleep(MsConsumingDelay);
-                    if (counter >= Limit)
+                    if (++counter >= Limit)
                     {
                         Console.WriteLine("Consumer satisfied. Finalizing pipeline.");
                         token.RequestStop();
