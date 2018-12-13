@@ -118,12 +118,10 @@ namespace PIPA
                     {
                         timer = null;
                         logger.Info("Reached autocancellation timeout. Stopping.");
-                        cm.RequestStop();
+                        cm.RequestStop(true);
                     }
                     else timer.Restart();
                 }
-
-                Guid.NewGuid().ToString().Substring(0, 12);
 
                 // If a cancellation was requested, we must flood the pipeline with empty objects to make sure
                 // that any stage thread blocked or starved is able to check the cancellation status.
